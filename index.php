@@ -134,10 +134,12 @@
 //////////////////////////////////////////////////
 //echo (int)$_GET["my_var"];
 //echo $_GET["name"];
-include "./classes/MyClass.php";
-include "./classes/Number.php";
-include "./classes/Worker.php";
-include "./classes/Tag.php";
+include_once "./classes/School.php";
+include_once "./classes/Student.php";
+include_once "./classes/BasePerson.php";
+//include "./classes/SpaceObject.php";
+//include "./classes/Worker.php";
+//include "./classes/Tag.php";
 //$workerFirst = new Worker("Ivan",10,110);
 //while ($workerFirst->isAlive()){
 //    $workerFirst->growUp();
@@ -145,12 +147,42 @@ include "./classes/Tag.php";
 //    echo "Age: " . $workerFirst->getAge() . " Height:" . $workerFirst->getHeight() . "</br>";
 //    $workerFirst->randomDeath();
 //}
-$featured = array("href" => "//link", "target" => "_blank");
-$tag=new Tag("a",true);
-$tag->setAttributes($featured);
-$tag->setAttribute("href", "//google.com");
-$tag->setBody("I m aaa");
-echo $tag->getString();
+//$featured = array("href" => "//link", "target" => "_blank");
+//$tag=new Tag("a",true);
+//$tag->setAttributes($featured);
+//$tag->setAttribute("href", "//google.com");
+//$tag->setBody("I m aaa");
+//echo $tag->getString();
+
+$student=new Student();
+$student1=new Student();
+
+$school=new School();
+$student->setCourse(1);
+$student->setName("Ivan");
+$student->setAge(15);
+$student->setFacultet("VTIPO");
+
+$student1->setCourse(2);
+$student1->setName("Mark");
+$student1->setAge(18);
+$student1->setFacultet("EKONOM");
+
+$marks=array('math' => array(5,4,3,4,5),'history'=>array(5,5,5,4,4));
+$student->setMarks($marks);
+$student1->setMarks($marks);
+$school->setName("Школа #5");
+$students=array($student,$student1);
+$school->setStudents($students);
+
+//echo var_dump($school->getStudentsByCourse(1));
+
+//echo var_dump($school->getStudentsByFacultet("EKONOM"));
+echo var_dump($student->getStudentsMarksBySubject("history"));
+
+
+
+
 
 
 
